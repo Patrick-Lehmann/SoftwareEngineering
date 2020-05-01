@@ -30,27 +30,39 @@ public class Client {
 		Scanner Benutzereingabe = new Scanner(System.in);
 		String userCurrency = null;
 		double userValue = 0.0;
+		boolean repeat = true;
+		String run;
 		
-		//Frage Benutzer nach der Währung
-		System.out.println("Welche Währung möchten Sie umrechnen?");
-		userCurrency = Benutzereingabe.next();
-		System.out.println("");
-		
-		//Suche in instanziierten Währungen nach eingegebener Währung und gebe Sie aus
-		if(Euro.validate(userCurrency)) {
-			System.out.println("Eingegebene Währung: "+Euro.getCurrency());
+		while(repeat) {
+			//Frage Benutzer nach der Währung
+			System.out.println("Welche Währung möchten Sie umrechnen?");
+			userCurrency = Benutzereingabe.next();
+			
+			//Suche in instanziierten Währungen nach eingegebener Währung und gebe Sie aus
+			if(Euro.validate(userCurrency)) {
+				System.out.println("Eingegebene Währung: "+Euro.getCurrency());
+				repeat = false;
+			}
+			else if(Dollar.validate(userCurrency)) {
+				System.out.println("Eingegebene Währung: "+Dollar.getCurrency());
+				repeat = false;
+			}
+			else if(Pfund.validate(userCurrency)) {
+				System.out.println("Eingegebene Währung: "+Pfund.getCurrency());
+				repeat = false;
+			}
+			else {
+				System.out.println("Eingegebene Währung nicht gefunden.");
+				System.out.println("Möchten Sie das Programm beenden? (Y/N)");
+				run = Benutzereingabe.next();
+				if(run.equals("Y") || run.equals("y")) {
+					repeat = false;
+					System.out.println("Programm wurde beendet.");
+					System.exit(1);
+				}
+			}
+			System.out.println("");
 		}
-		else if(Dollar.validate(userCurrency)) {
-			System.out.println("Eingegebene Währung: "+Dollar.getCurrency());
-		}
-		else if(Pfund.validate(userCurrency)) {
-			System.out.println("Eingegebene Währung: "+Pfund.getCurrency());
-		}
-		else {
-			System.out.println("Eingegebene Währung nicht gefunden.");
-		}
-
-		System.out.println("");
 		
 		//Frage Benutzer nach dem Betrag
 		System.out.println("Welchen Betrag möchten Sie umrechnen?");
