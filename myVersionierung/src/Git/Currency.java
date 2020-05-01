@@ -220,5 +220,14 @@ public class Currency {
 		return result;
 	}
 	
+	/**
+	 * Multipliziert zwei Fließkommazahlen und gibt eine Zahl mit zwei signifikanten Dezimalstellen zurück
+	 * @param value
+	 * @param exchangeRate
+	 * @return Umgerechnete Fließkommazahl mit zwei Dezimalstellen
+	 */
+	public static double convert(double value, double exchangeRate) {
+		return (double) Math.round(value*exchangeRate*100)/100;
+	}	
 	
 }
