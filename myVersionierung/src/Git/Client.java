@@ -3,6 +3,7 @@
  */
 package Git;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -64,13 +65,25 @@ public class Client {
 			System.out.println("");
 		}
 		
-		//Frage Benutzer nach dem Betrag
-		System.out.println("Welchen Betrag möchten Sie umrechnen?");
-		userValue = Benutzereingabe.nextDouble();
-		System.out.println("");
-		System.out.println("Eigegebener Betrag: "+userValue);
+		repeat = true;
 		
-		System.out.println("");
+		while(repeat) {
+			//Frage Benutzer nach dem Betrag
+			System.out.println("Welchen Betrag möchten Sie umrechnen?");
+			
+			try  {
+				userValue = Benutzereingabe.nextDouble();
+				System.out.println("Eigegebener Betrag: "+userValue);
+				repeat = false;
+			}
+			catch(InputMismatchException e) {
+				String errStr = Benutzereingabe.next();
+				System.out.println("'"+errStr+"' ist keine Zahl!");
+			}
+			
+			System.out.println("");
+		}
+		
 		
 		Benutzereingabe.close();
 		
