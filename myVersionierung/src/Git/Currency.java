@@ -228,6 +228,6 @@ public class Currency {
 	 */
 	public static double convert(double value, double exchangeRate) {
 		return (double) Math.round(value*exchangeRate*100)/100;
-	}	
+	}
 	
 }
