@@ -65,7 +65,6 @@ public class Client {
 			System.out.println("");
 		}
 		
-<<<<<<< HEAD
 		repeat = true;
 		
 		while(repeat) {
@@ -76,6 +75,25 @@ public class Client {
 				userValue = Benutzereingabe.nextDouble();
 				System.out.println("Eigegebener Betrag: "+userValue);
 				repeat = false;
+				//Suche in instanziierten Währungen nach eingegebener Währung und rechne sie um
+				if(Euro.validate(userCurrency)) {
+					System.out.println("Eigegebener Betrag ("+Euro.getCurrency()+"): "+userValue);
+					System.out.println("Eigegebener Betrag (Dollar): "+Euro.toDollar(userValue));
+					System.out.println("Eigegebener Betrag (Pfund): "+Euro.toPfund(userValue));
+				}
+				else if(Dollar.validate(userCurrency)) {
+					System.out.println("Eigegebener Betrag ("+Dollar.getCurrency()+"): "+userValue);
+					System.out.println("Eigegebener Betrag (Euro): "+Dollar.toEuro(userValue));
+					System.out.println("Eigegebener Betrag (Pfund): "+Dollar.toPfund(userValue));
+				}
+				else if(Pfund.validate(userCurrency)) {
+					System.out.println("Eigegebener Betrag ("+Pfund.getCurrency()+"): "+userValue);
+					System.out.println("Eigegebener Betrag (Euro): "+Pfund.toEuro(userValue));
+					System.out.println("Eigegebener Betrag (Dollar): "+Pfund.toDollar(userValue));
+				}
+				else {
+					System.out.println("Eingegebene Währung nicht gefunden.");
+				}
 			}
 			catch(InputMismatchException e) {
 				String errStr = Benutzereingabe.next();
@@ -83,33 +101,7 @@ public class Client {
 			}
 			
 			System.out.println("");
-=======
-		//Frage Benutzer nach dem Betrag
-		System.out.println("Welchen Betrag möchten Sie umrechnen?");
-		userValue = Benutzereingabe.nextDouble();
-		System.out.println("");
-		
-		//Suche in instanziierten Währungen nach eingegebener Währung und rechne sie um
-		if(Euro.validate(userCurrency)) {
-			System.out.println("Eigegebener Betrag ("+Euro.getCurrency()+"): "+userValue);
-			System.out.println("Eigegebener Betrag (Dollar): "+Euro.toDollar(userValue));
-			System.out.println("Eigegebener Betrag (Pfund): "+Euro.toPfund(userValue));
 		}
-		else if(Dollar.validate(userCurrency)) {
-			System.out.println("Eigegebener Betrag ("+Dollar.getCurrency()+"): "+userValue);
-			System.out.println("Eigegebener Betrag (Euro): "+Dollar.toEuro(userValue));
-			System.out.println("Eigegebener Betrag (Pfund): "+Dollar.toPfund(userValue));
-		}
-		else if(Pfund.validate(userCurrency)) {
-			System.out.println("Eigegebener Betrag ("+Pfund.getCurrency()+"): "+userValue);
-			System.out.println("Eigegebener Betrag (Euro): "+Pfund.toEuro(userValue));
-			System.out.println("Eigegebener Betrag (Dollar): "+Pfund.toDollar(userValue));
-		}
-		else {
-			System.out.println("Eingegebene Währung nicht gefunden.");
->>>>>>> calculation
-		}
-		
 		
 		Benutzereingabe.close();
 		
