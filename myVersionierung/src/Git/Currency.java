@@ -152,10 +152,10 @@ public class Currency {
 			result = value;
 			break;
 		case dollar: 
-			result = (double) Math.round(value*dollar2euro*100)/100;;
+			result = Currency.convert(value, dollar2euro);
 			break;
 		case pfund:
-			result = (double) Math.round(value*pfund2euro*100)/100;
+			result = Currency.convert(value, pfund2euro);
 			break;
 		default:
 			result = 0;
@@ -177,13 +177,13 @@ public class Currency {
 		//Für 2 Nachkommastellen wird der Wert vor dem Runden mit 100 multipliziert und anschließend wieder durch 100 geteilt
 		switch(this.currency) {
 		case euro:
-			result = (double) Math.round(value*euro2dollar*100)/100;
+			result = Currency.convert(value, euro2dollar);
 			break;
 		case dollar: 
 			result = value;
 			break;
 		case pfund:
-			result = (double) Math.round(value*pfund2dollar*100)/100;
+			result = Currency.convert(value, pfund2dollar);
 			break;
 		default:
 			result = 0;
@@ -205,10 +205,10 @@ public class Currency {
 		//Für 2 Nachkommastellen wird der Wert vor dem Runden mit 100 multipliziert und anschließend wieder durch 100 geteilt
 		switch(this.currency) {
 		case euro:
-			result = (double) Math.round(value*euro2pfund*100)/100;
+			result = Currency.convert(value, euro2pfund);
 			break;
 		case dollar: 
-			result = (double) Math.round(value*dollar2pfund*100)/100;
+			result = Currency.convert(value, dollar2pfund);
 			break;
 		case pfund:
 			result = value;

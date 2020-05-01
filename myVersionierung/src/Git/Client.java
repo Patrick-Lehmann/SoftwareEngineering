@@ -159,14 +159,14 @@ public class Client {
 						System.out.println("Eigegebener Betrag (Pfund): "+Euro.toPfund(userValueCurrency)+Currency.pfundSymbol);
 					}
 					else if(Dollar.validate(userCurrency)) {
-						System.out.println("Eigegebener Betrag ("+Dollar.getCurrency()+"): "+userValueCurrency+Currency.euroSymbol);
-						System.out.println("Eigegebener Betrag (Euro): "+Dollar.toEuro(userValueCurrency)+Currency.dollarSymbol);
+						System.out.println("Eigegebener Betrag ("+Dollar.getCurrency()+"): "+userValueCurrency+Currency.dollarSymbol);
+						System.out.println("Eigegebener Betrag (Euro): "+Dollar.toEuro(userValueCurrency)+Currency.euroSymbol);
 						System.out.println("Eigegebener Betrag (Pfund): "+Dollar.toPfund(userValueCurrency)+Currency.pfundSymbol);
 					}
 					else if(Pfund.validate(userCurrency)) {
-						System.out.println("Eigegebener Betrag ("+Pfund.getCurrency()+"): "+userValueCurrency+Currency.euroSymbol);
-						System.out.println("Eigegebener Betrag (Euro): "+Pfund.toEuro(userValueCurrency)+Currency.dollarSymbol);
-						System.out.println("Eigegebener Betrag (Dollar): "+Pfund.toDollar(userValueCurrency)+Currency.pfundSymbol);
+						System.out.println("Eigegebener Betrag ("+Pfund.getCurrency()+"): "+userValueCurrency+Currency.pfundSymbol);
+						System.out.println("Eigegebener Betrag (Euro): "+Pfund.toEuro(userValueCurrency)+Currency.euroSymbol);
+						System.out.println("Eigegebener Betrag (Dollar): "+Pfund.toDollar(userValueCurrency)+Currency.dollarSymbol);
 					}
 					else {
 						System.out.println("Eingegebene Währung nicht gefunden.");
