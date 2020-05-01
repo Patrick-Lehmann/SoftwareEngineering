@@ -45,13 +45,48 @@ public class Currency {
 	 */
 	public static final double pfund2euro = 1.1495;
 	
+	/**
+	 * Initialisiere Variable für Name der ausgewählten Währung
+	 */
+	private String currency = null;
+	
+	/**
+	 * Initialisiere Variable für Symbol ausgewählten Währung
+	 */
+	private String currencySymbol = null;
+	
 	
 	public Currency(String curr) {
 		switch(curr) {
-		case euro: System.out.println("Währung "+euro+" instanziiert..."); break;
-		case dollar: System.out.println("Währung "+dollar+" instanziiert..."); break;
-		case pfund: System.out.println("Währung "+pfund+" instanziiert..."); break;
+		case euro: 
+			System.out.println("Währung "+euro+" instanziiert...");
+			this.currency = euro;
+			this.currencySymbol = "€";
+			break;
+		case dollar: 
+			System.out.println("Währung "+dollar+" instanziiert...");
+			this.currency = dollar;
+			this.currencySymbol = "$";
+			break;
+		case pfund: 
+			System.out.println("Währung "+pfund+" instanziiert...");
+			this.currency = pfund;
+			this.currencySymbol = "£";
+			break;
+		default: 
+			break;
 		}
+	}
+	
+	public boolean validate(String input) {
+		if(this.currency.equals(input) || this.currencySymbol.equals(input)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String getCurrency() {
+		return this.currency;
 	}
 	
 }

@@ -35,13 +35,32 @@ public class Client {
 		System.out.println("Welche Währung möchten Sie umrechnen?");
 		userCurrency = Benutzereingabe.next();
 		System.out.println("");
-		System.out.println("Eigegebene Währung: "+userCurrency);
+		
+		//Suche in instanziierten Währungen nach eingegebener Währung und gebe Sie aus
+		if(Euro.validate(userCurrency)) {
+			System.out.println("Eingegebene Währung: "+Euro.getCurrency());
+		}
+		else if(Dollar.validate(userCurrency)) {
+			System.out.println("Eingegebene Währung: "+Dollar.getCurrency());
+		}
+		else if(Pfund.validate(userCurrency)) {
+			System.out.println("Eingegebene Währung: "+Pfund.getCurrency());
+		}
+		else {
+			System.out.println("Eingegebene Währung nicht gefunden.");
+		}
+
+		System.out.println("");
 		
 		//Frage Benutzer nach dem Betrag
 		System.out.println("Welchen Betrag möchten Sie umrechnen?");
 		userValue = Benutzereingabe.nextDouble();
 		System.out.println("");
 		System.out.println("Eigegebener Betrag: "+userValue);
+		
+		System.out.println("");
+		
+		Benutzereingabe.close();
 		
 	}
 
