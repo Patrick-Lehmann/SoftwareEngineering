@@ -22,6 +22,21 @@ public class Currency {
 	public static final String pfund = "Pfund";
 	
 	/**
+	 * Währungssymbol Euro
+	 */
+	public static final char euroSymbol = '€';
+	
+	/**
+	 * Währungssymbol Dollar
+	 */
+	public static final char dollarSymbol = '$';
+	
+	/**
+	 * Währungssymbol Pfund
+	 */
+	public static final char pfundSymbol = '£';
+	
+	/**
 	 * Konstante zur Umrechnung von Euro in Dollar. 
 	 * {@link} https://www.finanzen.net/waehrungsrechner/euro_us-dollar (01.05.2020)
 	 */
@@ -65,7 +80,7 @@ public class Currency {
 	/**
 	 * Initialisiere Variable für Symbol ausgewählten Währung
 	 */
-	private String currencySymbol = null;
+	private String currencySymbol;
 	
 	/**
 	 * Konstruktor konfiguriert die Klasse mit der eingegebenen Währung
@@ -76,17 +91,17 @@ public class Currency {
 		case euro: 
 			System.out.println("Währung "+euro+" instanziiert...");
 			this.currency = euro;
-			this.currencySymbol = "€";
+			this.currencySymbol = String.valueOf(euroSymbol);
 			break;
 		case dollar: 
 			System.out.println("Währung "+dollar+" instanziiert...");
 			this.currency = dollar;
-			this.currencySymbol = "$";
+			this.currencySymbol = String.valueOf(dollarSymbol);
 			break;
 		case pfund: 
 			System.out.println("Währung "+pfund+" instanziiert...");
 			this.currency = pfund;
-			this.currencySymbol = "£";
+			this.currencySymbol = String.valueOf(pfundSymbol);
 			break;
 		default: 
 			break;

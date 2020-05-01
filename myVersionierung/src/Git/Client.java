@@ -30,7 +30,8 @@ public class Client {
 		//interaktive Benutzereingabe
 		Scanner Benutzereingabe = new Scanner(System.in);
 		String userCurrency = null;
-		double userValue = 0.0;
+		double userValue;
+		double userValueCurrency;
 		boolean repeat = true;
 		String run;
 		
@@ -73,23 +74,23 @@ public class Client {
 			
 			try  {
 				userValue = Benutzereingabe.nextDouble();
-				System.out.println("Eigegebener Betrag: "+userValue);
+				userValueCurrency = (double) Math.round(userValue*100)/100;
 				repeat = false;
 				//Suche in instanziierten Währungen nach eingegebener Währung und rechne sie um
 				if(Euro.validate(userCurrency)) {
-					System.out.println("Eigegebener Betrag ("+Euro.getCurrency()+"): "+userValue);
-					System.out.println("Eigegebener Betrag (Dollar): "+Euro.toDollar(userValue));
-					System.out.println("Eigegebener Betrag (Pfund): "+Euro.toPfund(userValue));
+					System.out.println("Eigegebener Betrag ("+Euro.getCurrency()+"): "+userValueCurrency+Currency.euroSymbol);
+					System.out.println("Eigegebener Betrag (Dollar): "+Euro.toDollar(userValueCurrency)+Currency.dollarSymbol);
+					System.out.println("Eigegebener Betrag (Pfund): "+Euro.toPfund(userValueCurrency)+Currency.pfundSymbol);
 				}
 				else if(Dollar.validate(userCurrency)) {
-					System.out.println("Eigegebener Betrag ("+Dollar.getCurrency()+"): "+userValue);
-					System.out.println("Eigegebener Betrag (Euro): "+Dollar.toEuro(userValue));
-					System.out.println("Eigegebener Betrag (Pfund): "+Dollar.toPfund(userValue));
+					System.out.println("Eigegebener Betrag ("+Dollar.getCurrency()+"): "+userValueCurrency+Currency.euroSymbol);
+					System.out.println("Eigegebener Betrag (Euro): "+Dollar.toEuro(userValueCurrency)+Currency.dollarSymbol);
+					System.out.println("Eigegebener Betrag (Pfund): "+Dollar.toPfund(userValueCurrency)+Currency.pfundSymbol);
 				}
 				else if(Pfund.validate(userCurrency)) {
-					System.out.println("Eigegebener Betrag ("+Pfund.getCurrency()+"): "+userValue);
-					System.out.println("Eigegebener Betrag (Euro): "+Pfund.toEuro(userValue));
-					System.out.println("Eigegebener Betrag (Dollar): "+Pfund.toDollar(userValue));
+					System.out.println("Eigegebener Betrag ("+Pfund.getCurrency()+"): "+userValueCurrency+Currency.euroSymbol);
+					System.out.println("Eigegebener Betrag (Euro): "+Pfund.toEuro(userValueCurrency)+Currency.dollarSymbol);
+					System.out.println("Eigegebener Betrag (Dollar): "+Pfund.toDollar(userValueCurrency)+Currency.pfundSymbol);
 				}
 				else {
 					System.out.println("Eingegebene Währung nicht gefunden.");
