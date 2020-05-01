@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ImportExportAction">
+	</section>
+	<section name="ZipFileImportWizard">
+	</section>
+	<section name="FileSystemImportWizard">
+	</section>
+	<section name="PreferencesImportWizard">
+		<item key="" value="C:\Users\packi\OneDrive\Desktop\Currency.class"/>
+		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\packi\OneDrive\Desktop\Currency.class"/>
+		</list>
+	</section>
+</section>

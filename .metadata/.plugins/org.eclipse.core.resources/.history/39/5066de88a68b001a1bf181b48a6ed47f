@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package Git;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * @author Patrick-Lehmann
+ *
+ */
+class Tests {
+	
+	@Test
+	void converterTest() {
+		assertEquals(5, Currency.convert(-5,-1));
+	}
+
+}

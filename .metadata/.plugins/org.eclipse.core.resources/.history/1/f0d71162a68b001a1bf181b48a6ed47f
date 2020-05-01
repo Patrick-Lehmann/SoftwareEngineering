@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package Git;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * @author Patrick-Lehmann
+ *
+ */
+class Test {
+	
+	@Test
+	assertEquals(0, );
+
+}
