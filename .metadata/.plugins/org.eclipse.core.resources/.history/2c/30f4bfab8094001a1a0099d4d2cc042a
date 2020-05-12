@@ -1,0 +1,63 @@
+package CalculatorCurrency;
+
+import java.util.ArrayList;
+
+public class Currencies {
+	
+	/**
+	 * Konstante zur Umrechnung von Euro in Dollar. 
+	 * {@link} https://www.finanzen.net/waehrungsrechner/euro_us-dollar (01.05.2020)
+	 */
+	public static final double euro2dollar = 1.0946;
+	
+	/**
+	 * Konstante zur Umrechnung von Euro in Pfund. 
+	 * {@link} https://www.finanzen.net/waehrungsrechner/euro_britische-pfund (01.05.2020)
+	 */
+	public static final double euro2pfund = 0.8714;
+	
+	
+	/**
+	 * Liste mit allen Währungen
+	 */
+	ArrayList<ArrayList<String>> currencies = new ArrayList<ArrayList<String>>(); 
+	
+	
+	public Currencies() {
+		
+	}
+	
+	/**
+	 * Eine neue Währung der Klasse hinzufügen
+	 * @param curr
+	 */
+	public void setCurrency(String curr) {
+		this.currencies.add(curr);
+	}
+	
+	/**
+	 * Prüft das Vorhandensein einer Währung
+	 * @param curr
+	 * @return Boolean
+	 */
+	public boolean isValid(String curr) {
+		if(this.currencies.indexOf(curr) >= 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Multipliziert zwei Fließkommazahlen und gibt eine Zahl mit zwei signifikanten Dezimalstellen zurück
+	 * @param value
+	 * @param exchangeRate
+	 * @return Umgerechnete Fließkommazahl mit zwei Dezimalstellen
+	 */
+	public double convert(String curr, double amount) {
+		
+		
+		return (double) Math.round(value*exchangeRate*100)/100;
+	}
+	
+	
+}

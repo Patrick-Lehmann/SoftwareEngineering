@@ -1,0 +1,92 @@
+package CalculatorCurrency;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Client {
+
+	public static void main(String[] args) {
+		
+		boolean repeat = true;
+		String action;
+		String targetCurrency;
+		double amount;
+		double amountConverted;
+		String currencyName;
+		String currencyCode;
+		double exchangeRate;
+		
+		Scanner benutzereingabe = new Scanner(System.in);
+		
+		Currencies Dollar = new Currencies("Dollar",'$',1.0946);
+		Currencies Pfund = new Currencies("Pfund",'£',0.8714);
+		Currencies myCurrency;
+		
+		while(repeat) {
+			System.out.println("Welche Aktion möchten Sie durchführen?");
+			while(benutzereingabe.hasNextLine()) {
+				String token = benutzereingabe.nextLine();
+				if(token.equals("Beenden")) {
+					repeat = false;
+					System.exit(1);
+				}
+				else if(token.equals("neue Währung")) {
+					while(repeat) {
+						System.out.println("Wie heißt die Währung?");
+						currencyName = benutzereingabe.next();
+						System.out.println("Welches Währungskürzel hat diese Währung?");
+						currencyCode = benutzereingabe.next();
+						System.out.println("Welchen Umrechnungsfaktor hat diese Währung?");
+						try {
+							exchangeRate = benutzereingabe.nextDouble();
+							myCurrency = new Currencies(currencyName,currencyCode,exchangeRate);
+							repeat = false;
+						}
+						catch(InputMismatchException e) {
+							System.err.println(e);
+						}
+					}
+					repeat = true;
+				}
+				else {
+					while(repeat) {
+						System.out.println("In welche Währung soll umgerechnet werden?");
+						targetCurrency = benutzereingabe.next();
+						
+						if(targetCurrency.equals("Dollar") || targetCurrency.equals("Pfund")) {
+							while(repeat) {
+								System.out.println("Welcher Betrag soll umgerechnet werden?");
+								try {
+									amount = benutzereingabe.nextDouble();
+									if(targetCurrency.equals("Dollar")) {
+										amountConverted = Dollar.convert(amount);
+										System.out.println("Das sind "+amountConverted+" "+Dollar.getCode());
+										repeat = false;
+									}
+									else if(targetCurrency.equals("Pfund")) {
+										amountConverted = Pfund.convert(amount);
+										System.out.println("Das sind "+amountConverted+" "+Pfund.getCode());
+										repeat = false;
+									}
+									else if(targetCurrency.equals(currencyName)) {
+										amountConverted = myCurrency.convert(amount);
+										System.out.println("Das sind "+amountConverted+" "+Pfund.getCode());
+										repeat = false;
+									}
+								}
+								catch(InputMismatchException e) {
+									System.err.println(e);
+								}
+							}
+						}
+					}
+					repeat = true;
+				}
+			}
+		}
+		
+		benutzereingabe.close();
+		
+	}
+
+}

@@ -1,0 +1,58 @@
+package CalculatorCurrency;
+
+import java.util.Scanner;
+
+public class Client {
+
+	public static void main(String[] args) {
+		
+		boolean repeat = true;
+		String action = null;
+		String targetCurrency = null;
+		double amount = 0;
+		
+		Scanner benutzereingabe = new Scanner(System.in);
+		Currencies currency = new Currencies();
+		
+		while(repeat) {
+			//Frage Benutzer nach Aktion
+			System.out.println("Welche Aktion möchten Sie durchführen?");
+			action = benutzereingabe.next();
+			
+			if(action.equals("neue Währung")) {
+				//Benutzer gibt neue Währung ein
+				//System.out.println("Neue Währung ...");
+				repeat = false;
+				
+			}
+			else if(action.equals("Beenden")) {
+				//Benutzer möchte das Programm beenden
+				//System.out.println("Beenden ...");
+				repeat = false;
+				System.exit(1);
+			}
+			else {
+				//Benutzer wird eine Zielwährung umrechnen
+				System.out.println("Zielwährung ...");
+				while(repeat) {
+					
+					System.out.println("Welche Währung möchten Sie umrechnen?");
+					targetCurrency = benutzereingabe.next();
+					
+
+					
+					
+				}
+				
+
+				//System.out.println("Welchen Betrag möchten Sie umrechnen?");
+				//amount = benutzereingabe.nextDouble();
+			}
+		}
+		
+		benutzereingabe.close();
+
+	}
+
+
+}

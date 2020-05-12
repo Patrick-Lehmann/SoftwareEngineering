@@ -1,0 +1,34 @@
+package CalculatorCurrency;
+
+import java.util.ArrayList;
+
+public class Currencies {
+	
+	/**
+	 * Name der Währung
+	 */
+	private String Name;
+	
+	/**
+	 * Wechselkurs der Währung
+	 */
+	private double ExchangeRate;
+	
+	
+	public Currencies(String name,double exchangeRate) {
+		this.Name = name;
+		this.ExchangeRate = exchangeRate;
+	}
+	
+	/**
+	 * Multipliziert zwei Fließkommazahlen und gibt eine Zahl mit zwei signifikanten Dezimalstellen zurück
+	 * @param value
+	 * @param exchangeRate
+	 * @return Umgerechnete Fließkommazahl mit zwei Dezimalstellen
+	 */
+	public double convert(double amount) {
+		return (double) Math.round(amount*this.ExchangeRate*100)/100;
+	}
+	
+	
+}
