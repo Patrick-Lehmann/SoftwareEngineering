@@ -19,14 +19,17 @@ public class Client {
 			
 			if(aktion.equals("neue Währung")) {
 				//Benutzer gibt neue Währung ein
+				repeat = false;
 				
 			}
 			else if(aktion.equals("Beenden")) {
 				//Benutzer möchte das Programm beenden
+				repeat = false;
 				
 			}
 			else {
 				//Benutzer wird eine Zielwährung umrechnen
+				repeat = false;
 				
 			}
 		}
