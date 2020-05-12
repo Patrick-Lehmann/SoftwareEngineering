@@ -8,67 +8,68 @@ public class Client {
 	public static void main(String[] args) {
 		
 		boolean repeat = true;
-		String action = null;
-		String targetCurrency = null;
-		double amount = 0;
-		double amountConverted = 0;
+		String targetCurrency;
+		double amount;
+		double amountConverted;
+		String currencyName = null;
+		char currencyCode;
+		double exchangeRate;
 		
-		//Initiiere Scanner
 		Scanner benutzereingabe = new Scanner(System.in);
 		
-		/**
-		 * Instanziiere Währung Dollar
-		 * {@link} https://www.finanzen.net/waehrungsrechner/euro_us-dollar (01.05.2020)
-		 */
-		Currencies Dollar = new Currencies("Dollar",1.0946);
-
-		/**
-		 * Instanziiere Währung Pfund
-		 * {@link} https://www.finanzen.net/waehrungsrechner/euro_britische-pfund (01.05.2020)
-		 */
-		Currencies Pfund = new Currencies("Pfund",0.8714);
+		Currencies Dollar = new Currencies("Dollar",'$',1.0946);
+		Currencies Pfund = new Currencies("Pfund",'£',0.8714);
+		Currencies myCurrency = null;
 		
 		while(repeat) {
-			//Frage Benutzer nach Aktion
 			System.out.println("Welche Aktion möchten Sie durchführen?");
-			action = benutzereingabe.next();
+			String token = benutzereingabe.nextLine();				
 			
-			if(action.equals("neue Währung")) {
-				//Benutzer gibt neue Währung ein
-				repeat = false;
-				
-			}
-			else if(action.equals("Beenden")) {
-				//Benutzer möchte das Programm beenden
+			if(token.equals("Beenden")) {
 				repeat = false;
 				System.exit(1);
 			}
-			else {
-				//Benutzer wird eine Zielwährung umrechnen
+			else if(token.equals("neue Währung")) {
 				while(repeat) {
-					System.out.println("In welche Währung möchten Sie umrechnen?");
+					System.out.println("Wie heißt die Währung?");
+					currencyName = benutzereingabe.next();
+					System.out.println("Welches Währungskürzel hat diese Währung?");
+					currencyCode = benutzereingabe.next().charAt(0);
+					System.out.println("Welchen Umrechnungsfaktor hat diese Währung?");
+					try {
+						exchangeRate = benutzereingabe.nextDouble();
+						myCurrency = new Currencies(currencyName,currencyCode,exchangeRate);
+						repeat = false;
+					}
+					catch(InputMismatchException e) {
+						System.err.println(e);
+					}
+				}
+			}
+			else {
+				while(repeat) {
+					System.out.println("In welche Währung soll umgerechnet werden?");
 					targetCurrency = benutzereingabe.next();
 					
-					if(targetCurrency.equals("Dollar") || targetCurrency.equals("Pfund")) {
+					if(targetCurrency.equals("Dollar") || targetCurrency.equals("Pfund") || targetCurrency.equals(currencyName)) {
 						while(repeat) {
-							System.out.println("Welchen Betrag möchten Sie umrechnen?");
+							System.out.println("Welcher Betrag soll umgerechnet werden?");
 							try {
 								amount = benutzereingabe.nextDouble();
-								switch(targetCurrency) {
-								case "Dollar": 
-									//Wert berechnen
+								if(targetCurrency.equals("Dollar")) {
 									amountConverted = Dollar.convert(amount);
-									//Wert ausgeben
-									System.out.println("Das sind "+amountConverted+" $");
+									System.out.println(amount +" € sind "+amountConverted+" "+Dollar.getCode());
 									repeat = false;
-									break;
-								case "Pfund": 
-									//Wert berechnen
-									amountConverted = Pfund.convert(amount); 
-									//Wert ausgeben
-									System.out.println("Das sind "+amountConverted+" £");
+								}
+								else if(targetCurrency.equals("Pfund")) {
+									amountConverted = Pfund.convert(amount);
+									System.out.println(amount +" € sind "+amountConverted+" "+Pfund.getCode());
 									repeat = false;
-									break;
+								}
+								else if(targetCurrency.equals(currencyName)) {
+									amountConverted = myCurrency.convert(amount);
+									System.out.println(amount +" € sind "+amountConverted+" "+myCurrency.getCode());
+									repeat = false;
 								}
 							}
 							catch(InputMismatchException e) {
@@ -77,13 +78,14 @@ public class Client {
 						}
 					}
 				}
-				repeat = true;
 			}
+			repeat = true;
+			benutzereingabe.nextLine(); //prevent jump
+			System.out.println("");
 		}
 		
 		benutzereingabe.close();
-
+		
 	}
-
 
 }

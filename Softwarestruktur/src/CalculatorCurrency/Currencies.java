@@ -1,27 +1,31 @@
 package CalculatorCurrency;
 
-import java.util.ArrayList;
-
 public class Currencies {
 	
 	/**
-	 * Name der Währung
+	 * Name
 	 */
 	private String Name;
 	
 	/**
-	 * Wechselkurs der Währung
+	 * Wechselkurs
 	 */
 	private double ExchangeRate;
+	
+	/**
+	 * Währungskürzel
+	 */
+	private char Code;
 	
 	/**
 	 * Konstruktor
 	 * @param name
 	 * @param exchangeRate
 	 */
-	public Currencies(String name,double exchangeRate) {
-		this.Name = name;
-		this.ExchangeRate = exchangeRate;
+	public Currencies(String name,char code, double exchangeRate) {
+		Name = name;
+		Code = code;
+		ExchangeRate = exchangeRate;
 	}
 	
 	/**
@@ -31,8 +35,15 @@ public class Currencies {
 	 * @return Umgerechnete Fließkommazahl mit zwei Dezimalstellen
 	 */
 	public double convert(double amount) {
-		return (double) Math.round(amount*this.ExchangeRate*100)/100;
+		return (double) Math.round(amount*ExchangeRate*100)/100;
 	}
-	
+
+	/**
+	 * 
+	 * @return
+	 */
+	public char getCode() {
+		return Code;
+	}
 	
 }
