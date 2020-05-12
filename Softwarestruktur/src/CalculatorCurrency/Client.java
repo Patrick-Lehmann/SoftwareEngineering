@@ -1,5 +1,6 @@
 package CalculatorCurrency;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Client {
@@ -7,30 +8,76 @@ public class Client {
 	public static void main(String[] args) {
 		
 		boolean repeat = true;
-		String aktion = null;
+		String action = null;
+		String targetCurrency = null;
+		double amount = 0;
+		double amountConverted = 0;
 		
+		//Initiiere Scanner
 		Scanner benutzereingabe = new Scanner(System.in);
-		Currencies currency = new Currencies();
+		
+		/**
+		 * Instanziiere Währung Dollar
+		 * {@link} https://www.finanzen.net/waehrungsrechner/euro_us-dollar (01.05.2020)
+		 */
+		Currencies Dollar = new Currencies("Dollar",1.0946);
+
+		/**
+		 * Instanziiere Währung Pfund
+		 * {@link} https://www.finanzen.net/waehrungsrechner/euro_britische-pfund (01.05.2020)
+		 */
+		Currencies Pfund = new Currencies("Pfund",0.8714);
 		
 		while(repeat) {
 			//Frage Benutzer nach Aktion
 			System.out.println("Welche Aktion möchten Sie durchführen?");
-			aktion = benutzereingabe.next();
+			action = benutzereingabe.next();
 			
-			if(aktion.equals("neue Währung")) {
+			if(action.equals("neue Währung")) {
 				//Benutzer gibt neue Währung ein
 				repeat = false;
 				
 			}
-			else if(aktion.equals("Beenden")) {
+			else if(action.equals("Beenden")) {
 				//Benutzer möchte das Programm beenden
 				repeat = false;
-				
+				System.exit(1);
 			}
 			else {
 				//Benutzer wird eine Zielwährung umrechnen
-				repeat = false;
-				
+				while(repeat) {
+					System.out.println("In welche Währung möchten Sie umrechnen?");
+					targetCurrency = benutzereingabe.next();
+					
+					if(targetCurrency.equals("Dollar") || targetCurrency.equals("Pfund")) {
+						while(repeat) {
+							System.out.println("Welchen Betrag möchten Sie umrechnen?");
+							try {
+								amount = benutzereingabe.nextDouble();
+								switch(targetCurrency) {
+								case "Dollar": 
+									//Wert berechnen
+									amountConverted = Dollar.convert(amount);
+									//Wert ausgeben
+									System.out.println("Das sind "+amountConverted+" $");
+									repeat = false;
+									break;
+								case "Pfund": 
+									//Wert berechnen
+									amountConverted = Pfund.convert(amount); 
+									//Wert ausgeben
+									System.out.println("Das sind "+amountConverted+" £");
+									repeat = false;
+									break;
+								}
+							}
+							catch(InputMismatchException e) {
+								System.err.println(e);
+							}
+						}
+					}
+				}
+				repeat = true;
 			}
 		}
 		
