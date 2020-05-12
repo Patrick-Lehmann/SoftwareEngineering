@@ -3,7 +3,6 @@ INDEX VERSION 1.131+C:\Users\packi\OneDrive\Desktop\Hochschule\2. Semester\Softw
 1385037310.index
 1199528002.index
 2237117964.index
-3572068830.index
 3678105075.index
 2676691489.index
 2684654455.index
