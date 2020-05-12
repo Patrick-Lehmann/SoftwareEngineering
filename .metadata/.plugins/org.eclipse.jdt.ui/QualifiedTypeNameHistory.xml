@@ -13,4 +13,6 @@
 <fullyQualifiedTypeName name="org.junit.jupiter.api.MethodOrderer"/>
 <fullyQualifiedTypeName name="org.junit.jupiter.api.MethodOrderer.OrderAnnotation"/>
 <fullyQualifiedTypeName name="org.junit.jupiter.api.TestMethodOrder"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="CalculatorCurrency.Currencies"/>
 </qualifiedTypeNameHistroy>
