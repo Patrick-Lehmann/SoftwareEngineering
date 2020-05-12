@@ -3,21 +3,47 @@ package CalculatorCurrency;
 public class Currencies {
 	
 	/**
-	 * Konstante zur Umrechnung von Euro in Dollar. 
-	 * {@link} https://www.finanzen.net/waehrungsrechner/euro_us-dollar (01.05.2020)
+	 * Name
 	 */
-	public static final double euro2dollar = 1.0946;
+	private String Name;
 	
 	/**
-	 * Konstante zur Umrechnung von Euro in Pfund. 
-	 * {@link} https://www.finanzen.net/waehrungsrechner/euro_britische-pfund (01.05.2020)
+	 * Wechselkurs
 	 */
-	public static final double euro2pfund = 0.8714;
+	private double ExchangeRate;
 	
+	/**
+	 * Währungskürzel
+	 */
+	private char Code;
 	
-	public Currencies() {
-		
+	/**
+	 * Konstruktor
+	 * @param name
+	 * @param exchangeRate
+	 */
+	public Currencies(String name,char code, double exchangeRate) {
+		Name = name;
+		Code = code;
+		ExchangeRate = exchangeRate;
 	}
 	
+	/**
+	 * Multipliziert zwei Fließkommazahlen und gibt eine Zahl mit zwei signifikanten Dezimalstellen zurück
+	 * @param value
+	 * @param exchangeRate
+	 * @return Umgerechnete Fließkommazahl mit zwei Dezimalstellen
+	 */
+	public double convert(double amount) {
+		return (double) Math.round(amount*ExchangeRate*100)/100;
+	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public char getCode() {
+		return Code;
+	}
+	
 }
